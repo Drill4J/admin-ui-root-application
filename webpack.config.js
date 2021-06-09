@@ -27,6 +27,7 @@ module.exports = (webpackConfigEnv, argv) => {
   });
 
   return merge(defaultConfig, {
+    externals: ["single-spa"],
     plugins: [
       new Dotenv({
         path: "./.env.local",
