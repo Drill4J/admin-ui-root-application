@@ -13,26 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { adminSocket } from "common/connection";
-import { useEffect, useState } from "react";
+import { createGlobalStyle } from "styled-components";
+import tw from "twin.macro";
 
-export function useAdminConnection<T>(
-  topic: string,
-  message?: Record<string, unknown>
-): T | null {
-  const [data, setData] = useState<T | null>(null);
+export const TypographyStyles = createGlobalStyle`
+  html,
+  body,
+  #root {
+    ${tw`text-monochrome-black`}
+  }
+  
+  body {
+    ${tw`font-regular`};
+  }
 
-  useEffect(() => {
-    function handleDataChange(newData: T) {
-      setData(newData);
-    }
+  h2 {
+    ${tw`font-light text-monochrome-default text-18 leading-24`};
+  }
 
-    const unsubscribe = adminSocket.subscribe(topic, handleDataChange, message);
-
-    return () => {
-      unsubscribe();
-    };
-  }, [message, topic]);
-
-  return data;
-}
+  b {
+    ${tw`font-bold`};
+  }
+`;

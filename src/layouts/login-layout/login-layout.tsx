@@ -13,26 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { adminSocket } from "common/connection";
-import { useEffect, useState } from "react";
+import React from "react";
+import tw, { styled } from "twin.macro";
 
-export function useAdminConnection<T>(
-  topic: string,
-  message?: Record<string, unknown>
-): T | null {
-  const [data, setData] = useState<T | null>(null);
+import LoginLogo from "./logo.svg";
 
-  useEffect(() => {
-    function handleDataChange(newData: T) {
-      setData(newData);
-    }
-
-    const unsubscribe = adminSocket.subscribe(topic, handleDataChange, message);
-
-    return () => {
-      unsubscribe();
-    };
-  }, [message, topic]);
-
-  return data;
+interface Props {
+  children?: React.ReactNode;
 }
+
+const Sidebar = styled.div`
+  ${tw`w-108 h-full bg-monochrome-white`}
+  box-shadow: 11px 0 40px 0 rgba(0, 0, 0, 0.1);
+`;
+
+export const LoginLayout = ({ children }: Props) => (
+  <div tw="flex w-full h-full">
+    <Sidebar>{children}</Sidebar>
+    <div tw="flex flex-grow justify-center items-center">
+      <img src={LoginLogo} alt="login page logo" />
+    </div>
+  </div>
+);

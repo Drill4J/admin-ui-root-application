@@ -13,26 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { adminSocket } from "common/connection";
-import { useEffect, useState } from "react";
-
-export function useAdminConnection<T>(
-  topic: string,
-  message?: Record<string, unknown>
-): T | null {
-  const [data, setData] = useState<T | null>(null);
-
-  useEffect(() => {
-    function handleDataChange(newData: T) {
-      setData(newData);
-    }
-
-    const unsubscribe = adminSocket.subscribe(topic, handleDataChange, message);
-
-    return () => {
-      unsubscribe();
-    };
-  }, [message, topic]);
-
-  return data;
-}
+export { LoginPage } from "./login-page";

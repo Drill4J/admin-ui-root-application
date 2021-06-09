@@ -13,26 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { adminSocket } from "common/connection";
-import { useEffect, useState } from "react";
+@font-face {
+  font-family: "OpenSans";
+  src: url("OpenSans-Regular.woff2") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
-export function useAdminConnection<T>(
-  topic: string,
-  message?: Record<string, unknown>
-): T | null {
-  const [data, setData] = useState<T | null>(null);
+@font-face {
+  font-family: "OpenSans-Light";
+  src: url("OpenSans-Light.woff2") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
-  useEffect(() => {
-    function handleDataChange(newData: T) {
-      setData(newData);
-    }
+@font-face {
+  font-family: "OpenSans-Semibold";
+  src: url("OpenSans-SemiBold.woff2") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 
-    const unsubscribe = adminSocket.subscribe(topic, handleDataChange, message);
-
-    return () => {
-      unsubscribe();
-    };
-  }, [message, topic]);
-
-  return data;
+@font-face {
+  font-family: "OpenSans-Bold";
+  src: url("OpenSans-Bold.woff2") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
