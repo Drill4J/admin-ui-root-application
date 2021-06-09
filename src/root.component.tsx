@@ -15,9 +15,44 @@
  */
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
+import { createGlobalStyle } from "styled-components";
+import tw from "twin.macro";
+import { configureAxios } from "./connection";
 
 import "./index.css";
 
-export default function Root() {
-  return <BrowserRouter>Admin-ui</BrowserRouter>;
-}
+configureAxios();
+
+const GlobalStyle = createGlobalStyle`
+  html,
+  body,
+  #root {
+    ${tw`w-full h-full m-0 p-0 box-border text-monochrome-black`}
+  }
+
+  body {
+    ${tw`font-regular`};
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  h2 {
+    ${tw`font-light text-monochrome-default text-18 leading-24`};
+  }
+
+  b {
+    ${tw`font-bold`};
+  }
+`;
+
+const Root = () => (
+  <BrowserRouter>
+    <GlobalStyle />
+  </BrowserRouter>
+);
+
+export default Root;

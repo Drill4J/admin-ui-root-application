@@ -13,5 +13,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export { adminSocket } from "./admin-socket";
-export { configureAxios } from "./configure-axios";
+export const TOKEN_HEADER = "Authorization";
+export const TOKEN_KEY = "auth_token";
