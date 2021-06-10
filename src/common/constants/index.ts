@@ -13,4 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export { adminSocket } from "./admin-socket";
+export { TOKEN_HEADER, TOKEN_KEY } from "./connection";

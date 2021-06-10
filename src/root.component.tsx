@@ -14,10 +14,25 @@
  * limitations under the License.
  */
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { LoginPage } from "pages/login-page";
+
+import { TypographyStyles, LayoutStyles, FontsStyles } from "global-styles";
+import { configureAxios } from "./common";
 
 import "./index.css";
 
-export default function Root() {
-  return <BrowserRouter>Admin-ui</BrowserRouter>;
-}
+configureAxios();
+
+const Root = () => (
+  <BrowserRouter>
+    <FontsStyles />
+    <TypographyStyles />
+    <LayoutStyles />
+    <Switch>
+      <Route exact path="/login" component={LoginPage} />
+    </Switch>
+  </BrowserRouter>
+);
+
+export default Root;

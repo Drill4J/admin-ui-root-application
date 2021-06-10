@@ -27,7 +27,7 @@ module.exports = (webpackConfigEnv, argv) => {
   });
 
   return merge(defaultConfig, {
-    externals: ["@Drill4J/sockets"],
+    externals: ["single-spa"],
     plugins: [
       new Dotenv({
         path: "./.env.local",
@@ -40,7 +40,21 @@ module.exports = (webpackConfigEnv, argv) => {
         hooks: path.resolve(__dirname, "src/hooks/"),
         components: path.resolve(__dirname, "src/components/"),
         connection: path.resolve(__dirname, "src/connection/"),
+        pages: path.resolve(__dirname, "src/pages/"),
+        common: path.resolve(__dirname, "src/common/"),
+        layouts: path.resolve(__dirname, "src/layouts/"),
+        "global-styles": path.resolve(__dirname, "src/global-styles/"),
       },
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(woff|woff2)$/,
+          use: {
+            loader: "url-loader",
+          },
+        },
+      ],
     },
   });
 };
