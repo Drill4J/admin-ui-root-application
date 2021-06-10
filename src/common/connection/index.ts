@@ -13,5 +13,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export { adminSocket } from "./admin-socket";
+export { defaultAdminSocket } from "./default-admin-socket";
 export { configureAxios } from "./configure-axios";

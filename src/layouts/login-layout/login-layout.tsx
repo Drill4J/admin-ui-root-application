@@ -31,7 +31,7 @@ export const LoginLayout = ({ children }: Props) => (
   <div tw="flex w-full h-full">
     <Sidebar>{children}</Sidebar>
     <div tw="flex flex-grow justify-center items-center">
-      <img src={LoginLogo} alt="login page logo" />
+      <img src={LoginLogo} alt="" />
     </div>
   </div>
 );

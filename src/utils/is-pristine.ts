@@ -15,7 +15,7 @@
  */
 export const isPristine = (
   initial: Record<string, any>,
-  current: Record<string, any>
+  current: Record<string, any>,
 ): boolean =>
   !Object.entries(current).find(([key, value]) => {
     if (typeof initial[key] === "object") {

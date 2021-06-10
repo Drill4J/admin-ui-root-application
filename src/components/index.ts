@@ -14,4 +14,15 @@
  * limitations under the License.
  */
 export { HUD } from "./hud";
-export { Plugin } from "./plugin";
+export { PrivateRoute } from "./private-route";
+export { PageHeader } from "./page-header";
+export { Stub } from "./stub";
+export { Table, TR } from "./table";
+export {
+  TableErrorFallback,
+  PageNotFoundErrorFallback,
+  ErrorFallback,
+} from "./error-fallback";
+export { Toolbar } from "./toolbar";
+export { Footer } from "./footer";
+export { Sidebar, SidebarLink } from "./sidebar";

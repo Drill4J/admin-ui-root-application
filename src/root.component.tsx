@@ -14,15 +14,26 @@
  * limitations under the License.
  */
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { LoginPage } from "pages/login-page";
+import {
+  BrowserRouter, Redirect, Route, Switch,
+} from "react-router-dom";
+import { Icons } from "@drill4j/ui-kit";
 
+import {
+  LoginPage, AgentsPage, AgentPage,
+} from "pages";
 import { TypographyStyles, LayoutStyles, FontsStyles } from "global-styles";
 import { configureAxios } from "./common";
+import { Footer, PrivateRoute, Sidebar } from "./components";
 
 import "./index.css";
+import { AppLayout, PluginsLayout } from "./layouts";
 
 configureAxios();
+
+const sidebarLinks = [
+  { link: "agents", icon: Icons.Agents },
+];
 
 const Root = () => (
   <BrowserRouter>
@@ -31,6 +42,16 @@ const Root = () => (
     <LayoutStyles />
     <Switch>
       <Route exact path="/login" component={LoginPage} />
+      <Route exact path="/" render={() => <Redirect to="/agents" />} />
+      <PrivateRoute path="/agent" component={AgentPage} />
+      <AppLayout
+        sidebar={<Sidebar links={sidebarLinks} matchParams={{ path: "/:activeLink" }} />}
+        footer={<Footer />}
+      >
+        <Switch>
+          <PrivateRoute exact path="/agents" component={AgentsPage} />
+        </Switch>
+      </AppLayout>
     </Switch>
   </BrowserRouter>
 );

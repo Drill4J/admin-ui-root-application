@@ -44,7 +44,7 @@ export const LoginPage = () => {
     } catch ({ response: { data: { message = "" } = {} } = {} }) {
       setError(
         message ||
-          "There was some issue with an authentication. Please try again later."
+          "There was some issue with an authentication. Please try again later.",
       );
     }
   }

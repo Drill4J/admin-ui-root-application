@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 export const getDuration = (
-  value: number
+  value: number,
 ): {
   hours: string;
   minutes: string;
@@ -33,7 +33,7 @@ export const getDuration = (
   const seconds = Math.round(value / 1000) % 60;
   const minutes = Math.round((value - seconds * 1000) / 60000) % 60;
   const hours = Math.round(
-    (value - minutes * 60000 - seconds * 1000) / 3600000
+    (value - minutes * 60000 - seconds * 1000) / 3600000,
   );
   const isLessThenOneSecond = value > 0 && value < 1000;
 

@@ -28,6 +28,6 @@ export const percentFormatter = (value: number): number => {
   }
 
   return Number(
-    new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 }).format(value)
+    new Intl.NumberFormat("en-US", { maximumFractionDigits: 1 }).format(value),
   );
 };

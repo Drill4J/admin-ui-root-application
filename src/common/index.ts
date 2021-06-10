@@ -13,5 +13,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export { configureAxios, adminSocket } from "./connection";
+export { configureAxios, defaultAdminSocket } from "./connection";
 export { TOKEN_HEADER, TOKEN_KEY } from "./constants";

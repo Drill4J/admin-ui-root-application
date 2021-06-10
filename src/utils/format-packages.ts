@@ -16,8 +16,8 @@
 export const formatPackages = (value: string[] = []): string =>
   value.reduce(
     (acc: string, item: string, index: number) =>
-      index !== value.length - 1 && item !== ""
+      (index !== value.length - 1 && item !== ""
         ? `${acc + item}\n`
-        : acc + item,
-    ""
+        : acc + item),
+    "",
   );

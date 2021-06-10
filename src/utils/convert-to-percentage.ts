@@ -15,7 +15,7 @@
  */
 export function convertToPercentage(
   numerator: number,
-  denominator: number
+  denominator: number,
 ): number {
   if (
     denominator === 0 ||
