@@ -54,3 +54,18 @@ export const useCustomPush = () => {
 
 export const createPath = ({ path, params }: arg) =>
   `${path}?${queryString.stringify(params)}`;
+
+// interface Routes {
+//   agentsTable: void
+//   agentDashboard: "agentId"
+//   agentPlugin: "agentId" | "pluginId"
+// }
+//
+// type Params<Names extends string> = {
+//   [name in Names]: string
+// }
+//
+// const path = <AppPages extends Routes, PageName extends keyof AppPages>(pathc: PageName,
+//   params?: AppPages[PageName] extends void ? void : Record<AppPages[PageName], string>) => {
+//
+// };

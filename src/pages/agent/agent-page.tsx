@@ -54,8 +54,8 @@ export const AgentPage = () => {
       footer={<Footer />}
       sidebar={<Sidebar links={getPluginsLinks(agent.plugins)} />}
     >
-      <Route path="/agent/dashboard" component={Dashboard} />
-      <Route path="/agent/plugin" component={Plugin} />
+      <Route path="/agent/:agentId/:buildVersion/dashboard" component={Dashboard} />
+      <Route path="/agent/:agentId/:buildVersion/plugin/:pluginId" component={Plugin} />
     </PluginsLayout>
   );
 };

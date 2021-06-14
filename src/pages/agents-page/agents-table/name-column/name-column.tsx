@@ -21,7 +21,7 @@ import tw, { styled } from "twin.macro";
 import { AGENT_STATUS } from "common/constants";
 import { Agent } from "types/agent";
 import { ServiceGroupAgents } from "types/service-group-agents";
-import { createPath } from "../../../../hooks/use-custom-push";
+import { getPath } from "../../../../get-path";
 
 interface Props {
   agent?: Agent;
@@ -96,10 +96,7 @@ export const NameColumn = ({
           to={
             isServiceGroup
               ? `/service-group-full-page/${id}/service-group-dashboard`
-              : createPath({
-                path: "/agent/dashboard",
-                params: { agentId: id, buildVersion },
-              })
+              : getPath({ name: "agentDashboard", params: { agentId: id, buildVersion } })
           }
           disabled={agentIsDisabled}
           data-test="name-column"

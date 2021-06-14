@@ -13,17 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export { HUD } from "./hud";
-export { PrivateRoute } from "./private-route";
-export { PageHeader } from "./page-header";
-export { Stub } from "./stub";
-export { Table, TR } from "./table";
-export {
-  TableErrorFallback,
-  PageNotFoundErrorFallback,
-  ErrorFallback,
-} from "./error-fallback";
-export { Toolbar } from "./toolbar";
-export { Footer } from "./footer";
-export { Sidebar, SidebarLink } from "./sidebar";
-export { Link } from "./link";
+import React from "react";
+import { useHistory } from "react-router-dom";
+
+interface Props{
+  children: React.ReactNode;
+  to: string;
+  title?: string;
+}
+
+export const Link = ({
+  to, children, ...rest
+}: Props) => {
+  const { push } = useHistory();
+  console.log(to);
+  return (
+    <a
+      {...rest}
+      href={to}
+      onClick={(e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        push(to);
+      }}
+    >
+      {children}
+    </a>
+  );
+};

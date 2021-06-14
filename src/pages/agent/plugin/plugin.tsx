@@ -17,13 +17,15 @@ import React, { useEffect } from "react";
 import { getAppNames, LifeCycles, registerApplication } from "single-spa";
 
 import { useQueryParams } from "hooks";
-import containersPaths from "../../../containers-paths.json";
+import { paths } from "../../../containers-paths";
 
 export const Plugin = () => {
   const { pluginId } = useQueryParams<{ pluginId: string }>();
 
   useEffect(() => {
-    !getAppNames().includes(pluginId) && registerApp(pluginId, containersPaths[pluginId]);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    !getAppNames().includes(pluginId) && registerApp(pluginId, paths[pluginId]);
   }, [pluginId]);
 
   return <div id={pluginId} />;

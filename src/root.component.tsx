@@ -15,7 +15,7 @@
  */
 import React from "react";
 import {
-  BrowserRouter, Redirect, Route, Switch,
+  BrowserRouter, Route, Switch,
 } from "react-router-dom";
 import { Icons } from "@drill4j/ui-kit";
 
@@ -27,7 +27,7 @@ import { configureAxios } from "./common";
 import { Footer, PrivateRoute, Sidebar } from "./components";
 
 import "./index.css";
-import { AppLayout, PluginsLayout } from "./layouts";
+import { AppLayout } from "./layouts";
 
 configureAxios();
 
@@ -42,14 +42,13 @@ const Root = () => (
     <LayoutStyles />
     <Switch>
       <Route exact path="/login" component={LoginPage} />
-      <Route exact path="/" render={() => <Redirect to="/agents" />} />
       <PrivateRoute path="/agent" component={AgentPage} />
       <AppLayout
         sidebar={<Sidebar links={sidebarLinks} matchParams={{ path: "/:activeLink" }} />}
         footer={<Footer />}
       >
         <Switch>
-          <PrivateRoute exact path="/agents" component={AgentsPage} />
+          <PrivateRoute exact path="/" component={AgentsPage} />
         </Switch>
       </AppLayout>
     </Switch>

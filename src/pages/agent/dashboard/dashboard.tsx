@@ -14,37 +14,42 @@
  * limitations under the License.
  */
 import React from "react";
+import { Link, useParams } from "react-router-dom";
 import "twin.macro";
 
-import { useAdminConnection, useQueryParams, createPath } from "hooks";
+import { useAdminConnection, createPath } from "hooks";
 import { Agent } from "types/agent";
 import { HUD } from "components";
-import { Link } from "react-router-dom";
-import paths from "../../../containers-paths.json";
+import { paths } from "../../../containers-paths";
 
 export const Dashboard = () => {
   const { agentId = "", buildVersion = "" } =
-    useQueryParams<{ agentId?: string; buildVersion?: string }>();
+    useParams<{ agentId?: string; buildVersion?: string }>();
   const { plugins = [] } =
     useAdminConnection<Agent>(`/api/agents/${agentId}`) || {};
   const installedPlugins = plugins.filter((plugin) => !plugin.available);
 
   return (
     <div>
-      {installedPlugins.map(({ name, id = "" }) => (
-        <div key={id} tw="flex p-4 gap-x-4">
-          <Link
-            tw="link"
-            to={createPath({
-              path: "/agent/plugin",
-              params: { agentId, buildVersion, pluginId: id },
-            })}
-          >
-            {name}
-          </Link>
-          <HUD url={paths[id]} />
-        </div>
-      ))}
+      {installedPlugins.map(({ name, id = "" }) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const hudPath = paths[id];
+        return (
+          <div key={id} tw="flex p-4 gap-x-4">
+            <Link
+              tw="link"
+              to={createPath({
+                path: "/agent/plugin",
+                params: { agentId, buildVersion, pluginId: id },
+              })}
+            >
+              {name}
+            </Link>
+            <HUD url={hudPath} />
+          </div>
+        );
+      })}
     </div>
   );
 };
