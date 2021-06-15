@@ -22,7 +22,6 @@ import { TOKEN_KEY } from "common/constants";
 import { Notification } from "types/notificaiton";
 import { useAdminConnection } from "hooks";
 import { NotificationsSidebar } from "./notifications-sidebar";
-import { getPath } from "../../get-path";
 
 interface Props {
   breadcrumbs?: ReactNode;
