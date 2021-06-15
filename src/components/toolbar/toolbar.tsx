@@ -22,6 +22,7 @@ import { TOKEN_KEY } from "common/constants";
 import { Notification } from "types/notificaiton";
 import { useAdminConnection } from "hooks";
 import { NotificationsSidebar } from "./notifications-sidebar";
+import { getPath } from "../../get-path";
 
 interface Props {
   breadcrumbs?: ReactNode;
@@ -40,10 +41,7 @@ export const Toolbar = ({ breadcrumbs }: Props) => {
   const unreadNotifications = notifications.filter(
     (notification) => !notification.read,
   );
-  const {
-    push,
-    location: { pathname, state },
-  } = useHistory();
+  const { push, location: { pathname } } = useHistory();
 
   return (
     <div tw="flex items-center w-full h-full">
@@ -51,7 +49,7 @@ export const Toolbar = ({ breadcrumbs }: Props) => {
         <div tw="text-monochrome-default">{breadcrumbs}</div>
         <div tw="flex items-center text-12 leading-20 text-monochrome-default">
           <Link
-            to={{ pathname: `${pathname}/notification-sidebar`, state }}
+            to={`${pathname === "/" ? "" : pathname}/notification-sidebar`}
             className="link"
           >
             <Icons.Notification data-test="tolbar:icon-notification" />

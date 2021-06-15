@@ -13,11 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { useHistory, useLocation } from "react-router-dom";
-
-export const useCloseModal = (name: string, state?: unknown) => {
-  const { pathname } = useLocation();
-  const { push } = useHistory();
-
-  return () => push({ pathname: pathname.split(name)[0] || "/", state });
-};
+export { Fields } from "./fields";
+export {
+  composeValidators,
+  required,
+  sizeLimit,
+  requiredArray,
+  handleFieldErrors,
+  numericLimits,
+  positiveInteger,
+  correctPattern,
+} from "./form-validators";

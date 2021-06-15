@@ -38,7 +38,7 @@ export const Sidebar = ({ links }: Props) => {
   return (
     <div tw="flex flex-col w-20 h-full bg-monochrome-light-tint">
       {links.map(({
-        id, name, link, computed,
+        name, link, computed,
       }) => {
         const Icon = Icons[name] || Icons.Plugins;
         return (

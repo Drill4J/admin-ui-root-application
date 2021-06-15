@@ -73,6 +73,7 @@
     "npm": "^7.17.0",
     "postcss": "^8.3.0",
     "prettier": "^2.2.1",
+    "react-final-form": "^6.5.3",
     "single-spa": "^5.9.3",
     "single-spa-react": "^4.0.0",
     "systemjs": "^6.10.0",

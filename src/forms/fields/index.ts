@@ -13,11 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { useHistory, useLocation } from "react-router-dom";
+import { Inputs } from "@drill4j/ui-kit";
 
-export const useCloseModal = (name: string, state?: unknown) => {
-  const { pathname } = useLocation();
-  const { push } = useHistory();
+import { field } from "./field";
 
-  return () => push({ pathname: pathname.split(name)[0] || "/", state });
+export const Fields = {
+  Input: field(Inputs.Text),
+  Search: field(Inputs.Search),
+  Textarea: field(Inputs.Textarea),
+  Checkbox: field(Inputs.Checkbox),
 };
