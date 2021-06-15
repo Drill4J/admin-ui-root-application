@@ -21,7 +21,7 @@ import { Icons } from "@drill4j/ui-kit";
 
 import {
   LoginPage, AgentsPage, AgentPage,
-  SettingsPage,
+  SettingsPage, AgentRegistrationPage, ServiceGroupRegistrationPage,
 } from "pages";
 import { TypographyStyles, LayoutStyles, FontsStyles } from "global-styles";
 import { Footer, PrivateRoute, Sidebar } from "components";
@@ -51,6 +51,8 @@ const Root = () => (
         <Switch>
           <PrivateRoute exact path={["/", "/notification-sidebar"]} component={AgentsPage} />
           <PrivateRoute path={["/agent/:agentId/settings/:tab", "/service-group/:serviceGroupId/settings/:tab"]} component={SettingsPage} />
+          <PrivateRoute exact path="/agent/:agentId/registration" component={AgentRegistrationPage} />
+          <PrivateRoute exact path="/service-group/:serviceGroupId/registration" component={ServiceGroupRegistrationPage} />
         </Switch>
       </AppLayout>
     </Switch>

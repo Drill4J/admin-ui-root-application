@@ -22,7 +22,13 @@ export const LayoutStyles = createGlobalStyle`
   #root {
     ${tw`w-full h-full m-0 p-0 box-border`}
   }
-
+  
+  body {
+    & > div {
+      ${tw`w-full h-full`}
+    }
+  }
+  
   main {
     ${tw`w-full h-full`}
     

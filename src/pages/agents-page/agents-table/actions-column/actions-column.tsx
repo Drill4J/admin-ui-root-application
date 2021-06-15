@@ -68,11 +68,9 @@ export const ActionsColumn = ({ agent }: Props) => {
           }
         >
           <Link
-            to={`/${
-              agentType === "ServiceGroup"
-                ? "bulk-registration"
-                : "registration"
-            }/${agentId}?unregisteredAgentsCount=${unregisteredAgentsCount}`}
+            to={agentType === "ServiceGroup"
+              ? getPath({ name: "serviceGroupRegistration", params: { serviceGroupId: agentId } })
+              : getPath({ name: "agentRegistration", params: { agentId } })}
           >
             <Button
               data-test="action-column:icons-register"

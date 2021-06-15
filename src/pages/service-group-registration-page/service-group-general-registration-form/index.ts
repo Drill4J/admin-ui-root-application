@@ -13,12 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { useParams } from "react-router-dom";
-
-import { Agent } from "types/agent";
-import { useAdminConnection } from "./use-admin-connection";
-
-export const useAgent = (id?:string) => {
-  const { agentId = "" } = useParams<{ agentId?: string;}>();
-  return useAdminConnection<Agent>(`/api/agents/${id || agentId}`) || {};
-};
+export { ServiceGroupGeneralRegistrationForm } from "./service-group-general-registration-form";
