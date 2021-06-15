@@ -13,11 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { useHistory, useLocation } from "react-router-dom";
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import { AgentSettings } from "./agent-settings";
+import { ServiceGroupSettings } from "./service-group-settings";
 
-export const useCloseModal = (name: string, state?: unknown) => {
-  const { pathname } = useLocation();
-  const { push } = useHistory();
-
-  return () => push({ pathname: pathname.split(name)[0] || "/", state });
-};
+export const SettingsPage = () => (
+  <Switch>
+    <Route
+      component={AgentSettings}
+      path="/agent/:agentId/settings/:tab"
+    />
+    <Route
+      component={ServiceGroupSettings}
+      path="/service-group/:serviceGroupId/settings/:tab"
+    />
+  </Switch>
+);

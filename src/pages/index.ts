@@ -17,3 +17,4 @@ export { AgentsPage } from "./agents-page";
 export { LoginPage } from "./login-page";
 export { NotFoundPage } from "./not-found-page";
 export { Dashboard, Plugin, AgentPage } from "./agent";
+export { SettingsPage } from "./settings-page";

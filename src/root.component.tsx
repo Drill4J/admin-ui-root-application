@@ -21,13 +21,14 @@ import { Icons } from "@drill4j/ui-kit";
 
 import {
   LoginPage, AgentsPage, AgentPage,
+  SettingsPage,
 } from "pages";
 import { TypographyStyles, LayoutStyles, FontsStyles } from "global-styles";
-import { configureAxios } from "./common";
-import { Footer, PrivateRoute, Sidebar } from "./components";
+import { Footer, PrivateRoute, Sidebar } from "components";
+import { configureAxios } from "common";
+import { AppLayout } from "layouts";
 
 import "./index.css";
-import { AppLayout } from "./layouts";
 
 configureAxios();
 
@@ -42,13 +43,14 @@ const Root = () => (
     <LayoutStyles />
     <Switch>
       <Route exact path="/login" component={LoginPage} />
-      <PrivateRoute path="/agent" component={AgentPage} />
+      <PrivateRoute path={["/agent/:agentId/:buildVersion/dashboard", "/agent/:agentId/:buildVersion/plugin"]} component={AgentPage} />
       <AppLayout
         sidebar={<Sidebar links={sidebarLinks} matchParams={{ path: "/:activeLink" }} />}
         footer={<Footer />}
       >
         <Switch>
-          <PrivateRoute exact path="/" component={AgentsPage} />
+          <PrivateRoute exact path={["/", "/notification-sidebar"]} component={AgentsPage} />
+          <PrivateRoute path={["/agent/:agentId/settings/:tab", "/service-group/:serviceGroupId/settings/:tab"]} component={SettingsPage} />
         </Switch>
       </AppLayout>
     </Switch>

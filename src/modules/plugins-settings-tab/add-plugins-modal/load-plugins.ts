@@ -13,11 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { useHistory, useLocation } from "react-router-dom";
+import axios from "axios";
 
-export const useCloseModal = (name: string, state?: unknown) => {
-  const { pathname } = useLocation();
-  const { push } = useHistory();
-
-  return () => push({ pathname: pathname.split(name)[0] || "/", state });
+export const loadPlugins = (
+  connectionTopic: string,
+  { onSuccess, onError }: { onSuccess?: () => void; onError?: (message: string) => void } = {},
+) => async (selectedPlugins: string[]) => {
+  try {
+    await Promise.all(
+      selectedPlugins.map((pluginId) => axios.post(connectionTopic, { pluginId })),
+    );
+    onSuccess && onSuccess();
+  } catch ({ response: { data: { message } = {} } = {} }) {
+    onError && onError(message || "Internal service error");
+  }
 };

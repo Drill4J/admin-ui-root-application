@@ -19,12 +19,16 @@ interface Routes {
   agentsTable: void
   agentDashboard: "agentId" | "buildVersion"
   agentPlugin: "agentId" | "pluginId"
+  agentSettings: "agentId" | "tab"
+  serviceGroupSettings: "serviceGroupId" | "tab"
 }
 
-export const myRouter = createRouter<Routes>({
+export const router = createRouter<Routes>({
   agentsTable: "/",
   agentDashboard: "/agent/:agentId/:buildVersion/dashboard",
   agentPlugin: "/agent/:agentId/:buildVersion/plugin/:pluginId",
+  agentSettings: "/agent/:agentId/settings/:tab",
+  serviceGroupSettings: "/service-group/:serviceGroupId/settings/:tab",
 });
 
 interface Path<PageName extends keyof AppPages, AppPages extends Routes> {
@@ -34,9 +38,7 @@ interface Path<PageName extends keyof AppPages, AppPages extends Routes> {
   params?: AppPages[PageName] extends void ? void : Record<AppPages[PageName], string>;
 }
 
-export const getPath = <AppPages extends Routes, PageName extends keyof AppPages>({ name, params }: Path<PageName, AppPages>): string => {
+export const getPath = <AppPages extends Routes, PageName extends keyof AppPages>({ name, params }: Path<PageName, AppPages>): string =>
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const path = getPagePath(myRouter, name, params);
-  return path;
-};
+  getPagePath(router, name, params);

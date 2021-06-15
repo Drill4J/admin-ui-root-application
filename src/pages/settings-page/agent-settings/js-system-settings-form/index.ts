@@ -13,30 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from "react";
-import { useHistory } from "react-router-dom";
-
-interface Props{
-  children: React.ReactNode;
-  to: string;
-  title?: string;
-}
-
-export const Link = ({
-  to, children, ...rest
-}: Props) => {
-  const { push } = useHistory();
-  console.log(to);
-  return (
-    <a
-      {...rest}
-      href={to}
-      onClick={(e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-        push(to);
-      }}
-    >
-      {children}
-    </a>
-  );
-};
+export { JsSystemSettingsForm } from "./js-system-settings-form";
