@@ -44,6 +44,11 @@ module.exports = (webpackConfigEnv, argv) => {
         common: path.resolve(__dirname, "src/common/"),
         layouts: path.resolve(__dirname, "src/layouts/"),
         "global-styles": path.resolve(__dirname, "src/global-styles/"),
+        modules: path.resolve(__dirname, "src/modules/"),
+        "notification-manager": path.resolve(
+          __dirname,
+          "src/notification-manager/"
+        ),
       },
     },
     module: {

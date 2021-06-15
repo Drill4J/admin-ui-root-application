@@ -1,5 +1,5 @@
 {
-  "extends": ["ts-important-stuff", "airbnb", "plugin:prettier/recommended"],
+  "extends": ["airbnb", "plugin:@typescript-eslint/recommended"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "prettier", "drill4j"],
   "settings": {
@@ -53,6 +53,10 @@
     "react/no-unused-prop-types": 0,
     "react/require-default-props": 0,
     "@typescript-eslint/explicit-module-boundary-types": 0,
-    "@typescript-eslint/no-explicit-any": 0
+    "@typescript-eslint/no-explicit-any": 0,
+    "quotes": [2, "double", { "avoidEscape": true }]
+  },
+  "globals": {
+    "JSX": true
   }
 }

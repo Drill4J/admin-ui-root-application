@@ -14,3 +14,4 @@
  * limitations under the License.
  */
 export { TOKEN_HEADER, TOKEN_KEY } from "./connection";
+export { AGENT_STATUS } from "./agent-status";

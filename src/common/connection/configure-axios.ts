@@ -33,7 +33,7 @@ export function configureAxios() {
 
       return config;
     },
-    (error) => Promise.reject(error)
+    (error) => Promise.reject(error),
   );
 
   axios.interceptors.response.use(
@@ -47,6 +47,6 @@ export function configureAxios() {
       }
 
       return Promise.reject(error);
-    }
+    },
   );
 }

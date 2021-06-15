@@ -14,3 +14,5 @@
  * limitations under the License.
  */
 export { LoginLayout } from "./login-layout";
+export { AppLayout } from "./app-layout";
+export { PluginsLayout } from "./plugins-layout";

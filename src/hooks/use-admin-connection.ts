@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { adminSocket } from "common/connection";
+import { defaultAdminSocket } from "common/connection";
 import { useEffect, useState } from "react";
 
 export function useAdminConnection<T>(
   topic: string,
-  message?: Record<string, unknown>
+  message?: Record<string, unknown>,
 ): T | null {
   const [data, setData] = useState<T | null>(null);
 
@@ -27,7 +27,11 @@ export function useAdminConnection<T>(
       setData(newData);
     }
 
-    const unsubscribe = adminSocket.subscribe(topic, handleDataChange, message);
+    const unsubscribe = defaultAdminSocket.subscribe(
+      topic,
+      handleDataChange,
+      message,
+    );
 
     return () => {
       unsubscribe();
