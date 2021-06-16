@@ -17,6 +17,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Popup } from "@drill4j/ui-kit";
 import "twin.macro";
+import { getPath } from "../../get-path";
 
 interface Props {
   isOpen: boolean;
@@ -42,7 +43,7 @@ export const CancelAgentRegistrationModal = ({
             {message}
           </span>
           <div tw="flex mt-6 gap-4">
-            <Button primary size="large" onClick={() => push("/agents")}>
+            <Button primary size="large" onClick={() => push(getPath({ name: "agentsTable" }))}>
               Abort
             </Button>
             <Button secondary size="large" onClick={() => onToggle(false)}>

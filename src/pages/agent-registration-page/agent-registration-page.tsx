@@ -35,6 +35,7 @@ import { Agent } from "types/agent";
 import { JavaGeneralRegistrationForm } from "./java-general-registration-form";
 import { JsGeneralRegistrationForm } from "./js-general-registration-form";
 import { JsSystemRegistrationForm } from "./js-system-registration-form";
+import { getPath } from "../../get-path";
 
 export const AgentRegistrationPage = () => {
   const { agentId = "" } = useParams<{ agentId: string }>();
@@ -80,7 +81,7 @@ export const AgentRegistrationPage = () => {
             }
           } else {
             await preregisterOfflineAgent(data);
-            push("/agents");
+            push(getPath({ name: "agentsTable" }));
           }
         }}
         onSuccessMessage={agentId ? "Agent has been registered" : "Offline agent has been preregistered"}
