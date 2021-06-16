@@ -45,7 +45,7 @@ export const AddPluginsModal = ({
   const { showMessage } = useContext(NotificationManagerContext);
   const { pathname } = useLocation();
   const { params: { type = "", id: agentId = "" } = {} } = matchPath<{ type: "service-group" | "agent"; id: string }>(pathname, {
-    path: "/agents/:type/:id/settings/:tab",
+    path: "/:type/:id/settings",
   }) || {};
   const [loading, setLoading] = useState(false);
   const closeModal = useCloseModal("/add-plugin-modal");

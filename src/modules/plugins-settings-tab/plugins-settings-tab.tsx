@@ -25,6 +25,7 @@ import { Agent } from "types/agent";
 import { Plugin } from "types/plugin";
 import { useAdminConnection } from "hooks";
 import { AddPluginsModal } from "./add-plugins-modal";
+import { getPath } from "../../get-path";
 
 interface Props {
   agent: Agent;
@@ -33,7 +34,7 @@ interface Props {
 export const PluginsSettingsTab = ({ agent: { buildVersion = "" } }: Props) => {
   const { pathname } = useLocation();
   const { params: { type: agentType = "", id = "" } = {} } = matchPath<{ type: "service-group" | "agent", id: string }>(pathname, {
-    path: "/agents/:type/:id/settings/:tab",
+    path: "/:type/:id/settings",
   }) || {};
   const pluginsTopic = `/${agentType === "agent" ? "agents" : "groups"}/${id}/plugins`;
   const plugins = useAdminConnection<Plugin[]>(pluginsTopic) || [];
@@ -51,7 +52,7 @@ export const PluginsSettingsTab = ({ agent: { buildVersion = "" } }: Props) => {
           <span tw="ml-2 font-regular text-monochrome-default">{installedPlugins.length}</span>
         </span>
         <Link
-          to={`/agents/${agentType}/${id}/settings/plugins/add-plugin-modal`}
+          to={getPath({ name: "addPluginModal", params: { entity: agentType, id } })}
           data-test={`${agentType}-info-page:add-plugin-button`}
         >
           <Button
@@ -95,7 +96,7 @@ export const PluginsSettingsTab = ({ agent: { buildVersion = "" } }: Props) => {
         )}
       </div>
       <Route
-        path="/agents/:type/:id/settings/plugins/add-plugin-modal"
+        path="/:entity/:agentId/settings/plugins/add-plugin-modal"
         render={() => (
           <AddPluginsModal
             plugins={plugins}

@@ -23,6 +23,7 @@ interface Routes {
   serviceGroupSettings: "serviceGroupId" | "tab"
   agentRegistration: "agentId"
   serviceGroupRegistration: "serviceGroupId"
+  addPluginModal: "entity" | "id"
 }
 
 export const router = createRouter<Routes>({
@@ -33,6 +34,7 @@ export const router = createRouter<Routes>({
   serviceGroupSettings: "/service-group/:serviceGroupId/settings/:tab",
   agentRegistration: "/agent/:agentId/registration",
   serviceGroupRegistration: "/service-group/:serviceGroupId/registration",
+  addPluginModal: "/:entity/:id/settings/plugins/add-plugin-modal",
 });
 
 interface Path<PageName extends keyof AppPages, AppPages extends Routes> {
