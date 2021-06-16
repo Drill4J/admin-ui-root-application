@@ -13,27 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { createGlobalStyle } from "styled-components";
-import tw from "twin.macro";
-
-export const LayoutStyles = createGlobalStyle`  
-  html,
-  body,
-  #root {
-    ${tw`w-full h-full m-0 p-0 box-border`}
-  }
-
-  main {
-    ${tw`w-full h-full`}
-    
-    & > div {
-      ${tw`w-full h-full`}
-    }
-  }
-  
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
-`;
+export { PluginHeader } from "./plugin-header";

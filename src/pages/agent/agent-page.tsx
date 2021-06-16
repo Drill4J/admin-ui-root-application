@@ -24,6 +24,7 @@ import { Footer } from "../../components";
 import { Sidebar } from "./sidebar";
 import { useAgent } from "../../hooks/use-agent";
 import { Plugin } from "./plugin";
+import { PluginHeader } from "./plugin-header";
 
 interface Link {
   id: string;
@@ -53,6 +54,7 @@ export const AgentPage = () => {
     <PluginsLayout
       footer={<Footer />}
       sidebar={<Sidebar links={getPluginsLinks(agent.plugins)} />}
+      header={<PluginHeader agentName={agent.name} agentStatus={agent.status} />}
     >
       <Route path="/agent/:agentId/:buildVersion/dashboard" component={Dashboard} />
       <Route path="/agent/:agentId/:buildVersion/plugin/:pluginId" component={Plugin} />

@@ -53,6 +53,7 @@ const Root = () => (
           <PrivateRoute path={["/agent/:agentId/settings/:tab", "/service-group/:serviceGroupId/settings/:tab"]} component={SettingsPage} />
           <PrivateRoute exact path="/agent/:agentId/registration" component={AgentRegistrationPage} />
           <PrivateRoute exact path="/service-group/:serviceGroupId/registration" component={ServiceGroupRegistrationPage} />
+          <PrivateRoute path="/preregister/offline-agent" component={AgentRegistrationPage} />
         </Switch>
       </AppLayout>
     </Switch>
