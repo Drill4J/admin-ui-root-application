@@ -95,7 +95,7 @@ export const NameColumn = ({
         <AgentName
           to={
             isServiceGroup
-              ? `/service-group-full-page/${id}/service-group-dashboard`
+              ? getPath({ name: "serviceGroupDashboard", params: { serviceGroupId: id } })
               : getPath({ name: "agentDashboard", params: { agentId: id, buildVersion } })
           }
           disabled={agentIsDisabled}

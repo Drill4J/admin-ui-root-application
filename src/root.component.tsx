@@ -21,7 +21,7 @@ import { Icons } from "@drill4j/ui-kit";
 
 import {
   LoginPage, AgentsPage, AgentPage,
-  SettingsPage, AgentRegistrationPage, ServiceGroupRegistrationPage,
+  SettingsPage, AgentRegistrationPage, ServiceGroupRegistrationPage, ServiceGroup,
 } from "pages";
 import { TypographyStyles, LayoutStyles, FontsStyles } from "global-styles";
 import { Footer, PrivateRoute, Sidebar } from "components";
@@ -44,6 +44,10 @@ const Root = () => (
     <Switch>
       <Route exact path="/login" component={LoginPage} />
       <PrivateRoute path={["/agent/:agentId/:buildVersion/dashboard", "/agent/:agentId/:buildVersion/plugin"]} component={AgentPage} />
+      <PrivateRoute
+        path={["/service-group/:serviceGroupId/dashboard", "/service-group/:serviceGroupId/plugin"]}
+        component={ServiceGroup}
+      />
       <AppLayout
         sidebar={<Sidebar links={sidebarLinks} matchParams={{ path: "/:activeLink" }} />}
         footer={<Footer />}

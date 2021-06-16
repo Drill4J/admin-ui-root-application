@@ -13,11 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export { AgentsPage } from "./agents-page";
-export { LoginPage } from "./login-page";
-export { NotFoundPage } from "./not-found-page";
-export { Dashboard, Plugin, AgentPage } from "./agent";
-export { SettingsPage } from "./settings-page";
-export { AgentRegistrationPage } from "./agent-registration-page";
-export { ServiceGroupRegistrationPage } from "./service-group-registration-page";
-export { ServiceGroup } from "./service-group";
+export { ServiceGroupHeader } from "./service-group-header";
