@@ -17,7 +17,7 @@ import React, {
   useContext, useEffect, useState,
 } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { matchPath, useLocation } from "react-router-dom";
 import {
   Icons, Tooltip, GeneralAlerts, FormGroup, Spinner, Button,
 } from "@drill4j/ui-kit";
@@ -47,7 +47,10 @@ export const SystemSettingsForm = ({
   const [unlockedPackages, setUnlockedPackages] = useState(false);
   const [isUnlockingModalOpened, setIsUnlockingModalOpened] = useState(false);
   const { showMessage } = useContext(NotificationManagerContext);
-  const { id = "" } = useParams<{ id: string }>();
+  const { pathname } = useLocation();
+  const { params: { id = "" } = {} } = matchPath<{ id: string }>(pathname, {
+    path: "/:type/:id/settings",
+  }) || {};
 
   return (
     <Form

@@ -19,7 +19,7 @@ import { Icons, Tooltip } from "@drill4j/ui-kit";
 import "twin.macro";
 
 import { SidebarLink } from "components";
-import { useQueryParams } from "../../../hooks";
+import { useQueryParams } from "hooks";
 
 interface Props {
   active?: "active";

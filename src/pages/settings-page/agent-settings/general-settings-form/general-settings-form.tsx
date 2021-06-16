@@ -15,7 +15,7 @@
  */
 import React, { useContext, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { matchPath, useLocation } from "react-router-dom";
 import { Form, Field } from "react-final-form";
 
 import {
@@ -37,7 +37,10 @@ interface Props {
 }
 
 export const GeneralSettingsForm = ({ agent, setPristineSettings }: Props) => {
-  const { id = "" } = useParams<{ id: string }>();
+  const { pathname } = useLocation();
+  const { params: { id = "" } = {} } = matchPath<{ id: string }>(pathname, {
+    path: "/:type/:id/settings",
+  }) || {};
   const { showMessage } = useContext(NotificationManagerContext);
 
   return (

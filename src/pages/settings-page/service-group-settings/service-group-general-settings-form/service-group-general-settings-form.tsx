@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import React, { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { matchPath, useLocation } from "react-router-dom";
 import axios from "axios";
 import { Form, Field } from "react-final-form";
 
@@ -38,7 +38,10 @@ interface Props {
 
 export const ServiceGroupGeneralSettingsForm = ({ serviceGroup, setPristineSettings }: Props) => {
   const { showMessage } = useContext(NotificationManagerContext);
-  const { id = "" } = useParams<{ id: string }>();
+  const { pathname } = useLocation();
+  const { params: { id = "" } = {} } = matchPath<{ id: string }>(pathname, {
+    path: "/:type/:id/settings",
+  }) || {};
 
   return (
     <Form
