@@ -21,8 +21,8 @@ import tw, { styled, css } from "twin.macro";
 import { AGENT_STATUS } from "common/constants";
 import { capitalize, snakeToSpaces } from "utils";
 import { AgentStatus } from "types/agent-status";
-import { useAgent } from "hooks";
 import LogoSvg from "./logo.svg";
+import { getPath } from "../../../get-path";
 
 interface Props {
   agentName?: string;
@@ -81,18 +81,16 @@ const AgentStatusWrapper = styled.div(({ status }: { status?: AgentStatus }) => 
 ]);
 
 export const PluginHeader = ({ agentName, agentStatus }: Props) => {
-  const loading = true;
   const { location: { pathname } } = useHistory();
-  const { params: { buildVersion = "", agentId = "" } = {} } = matchPath<{ buildVersion: string; agentId: string }>(pathname, {
+  const { params: { agentId = "" } = {} } = matchPath<{ buildVersion: string; agentId: string }>(pathname, {
     path: "/agent/:agentId/:buildVersion",
   }) || {};
-  const { buildVersion: activeBuildVersion = "" } = useAgent(agentId) || {};
 
   return (
     <div tw="flex w-full h-28">
       <div tw="flex justify-between items-center w-full h-full px-6">
         <div className="flex items-center w-full">
-          <LogoWrapper recording={buildVersion === activeBuildVersion && loading}>
+          <LogoWrapper>
             <img tw="absolute bottom-0 left-0" src={LogoSvg} alt="" />
           </LogoWrapper>
           <AgentInfo>
@@ -109,7 +107,7 @@ export const PluginHeader = ({ agentName, agentStatus }: Props) => {
         </div>
         <SettingsButton
           tw="link"
-          to={`/agents/agent/${agentId}/settings/general`}
+          to={getPath({ name: "agentSettings", params: { agentId, tab: "general" } })}
           disabled={agentStatus === AGENT_STATUS.OFFLINE}
           data-test="plugin-header:settings-button"
         >

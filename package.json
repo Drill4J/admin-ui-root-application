@@ -24,7 +24,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint --fix"
+      "eslint src --ext js,ts,tsx --fix"
     ]
   },
   "devDependencies": {
