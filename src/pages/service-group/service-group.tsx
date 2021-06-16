@@ -26,10 +26,10 @@ import { Breadcrumbs } from "modules";
 import { Plugin } from "types/plugin";
 import { ServiceGroup as ServiceGroupType } from "types/service-group";
 import { useAdminConnection } from "hooks";
+import { Agent } from "types/agent";
 import { ServiceGroupHeader } from "./service-group-header";
 import { Sidebar } from "../agent/sidebar";
 import { Dashboard } from "../agent";
-import { Agent } from "../../types/agent";
 
 interface Link {
   id: string;
@@ -67,11 +67,7 @@ export const ServiceGroup = () => {
   return (
     <PluginsLayout
       sidebar={activeLink && <Sidebar links={getPluginsList(serviceGroupId, plugins)} matchParams={{ path }} />}
-      toolbar={(
-        <Toolbar
-          breadcrumbs={<Breadcrumbs />}
-        />
-      )}
+      toolbar={<Toolbar breadcrumbs={<Breadcrumbs />} />}
       header={<ServiceGroupHeader name={name} agentsCount={agentCount} />}
       footer={<Footer />}
     >

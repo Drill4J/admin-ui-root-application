@@ -19,7 +19,7 @@ interface Routes {
   agentsTable: void
   agentDashboard: "agentId" | "buildVersion"
   serviceGroupDashboard: "serviceGroupId"
-  agentPlugin: "agentId" | "pluginId"
+  agentPlugin: "agentId" | "pluginId" | "buildVersion"
   agentSettings: "agentId" | "tab"
   serviceGroupSettings: "serviceGroupId" | "tab"
   agentRegistration: "agentId"

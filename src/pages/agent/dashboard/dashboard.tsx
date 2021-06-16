@@ -17,10 +17,11 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import "twin.macro";
 
-import { useAdminConnection, createPath } from "hooks";
+import { useAdminConnection } from "hooks";
 import { Agent } from "types/agent";
 import { HUD } from "components";
 import { paths } from "../../../containers-paths";
+import { getPath } from "../../../get-path";
 
 export const Dashboard = () => {
   const { agentId = "", buildVersion = "" } =
@@ -39,8 +40,8 @@ export const Dashboard = () => {
           <div key={id} tw="flex p-4 gap-x-4">
             <Link
               tw="link"
-              to={createPath({
-                path: "/agent/plugin",
+              to={getPath({
+                name: "agentPlugin",
                 params: { agentId, buildVersion, pluginId: id },
               })}
             >
