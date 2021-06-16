@@ -24,3 +24,6 @@ export { Breadcrumbs } from "./breadcrumbs";
 export { PluginsSettingsTab } from "./plugins-settings-tab";
 export { SystemSettingsForm } from "./system-settings-form";
 export { UnlockingSystemSettingsFormModal } from "./unlocking-system-settings-form-modal";
+export { CancelAgentRegistrationModal } from "./cancel-agent-registration-modal";
+export { InstallPluginsStep } from "./install-plugins-step";
+export { SystemSettingsStep } from "./system-setting-step";

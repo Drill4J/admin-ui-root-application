@@ -21,6 +21,8 @@ interface Routes {
   agentPlugin: "agentId" | "pluginId"
   agentSettings: "agentId" | "tab"
   serviceGroupSettings: "serviceGroupId" | "tab"
+  agentRegistration: "agentId"
+  serviceGroupRegistration: "serviceGroupId"
 }
 
 export const router = createRouter<Routes>({
@@ -29,6 +31,8 @@ export const router = createRouter<Routes>({
   agentPlugin: "/agent/:agentId/:buildVersion/plugin/:pluginId",
   agentSettings: "/agent/:agentId/settings/:tab",
   serviceGroupSettings: "/service-group/:serviceGroupId/settings/:tab",
+  agentRegistration: "/agent/:agentId/registration",
+  serviceGroupRegistration: "/service-group/:serviceGroupId/registration",
 });
 
 interface Path<PageName extends keyof AppPages, AppPages extends Routes> {

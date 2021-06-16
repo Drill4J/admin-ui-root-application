@@ -18,3 +18,5 @@ export { LoginPage } from "./login-page";
 export { NotFoundPage } from "./not-found-page";
 export { Dashboard, Plugin, AgentPage } from "./agent";
 export { SettingsPage } from "./settings-page";
+export { AgentRegistrationPage } from "./agent-registration-page";
+export { ServiceGroupRegistrationPage } from "./service-group-registration-page";
