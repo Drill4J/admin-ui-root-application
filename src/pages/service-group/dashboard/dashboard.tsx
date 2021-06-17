@@ -18,16 +18,14 @@ import { useParams } from "react-router-dom";
 import "twin.macro";
 
 import { useAdminConnection } from "hooks";
-import { Agent } from "types/agent";
+import { Plugin } from "types/plugin";
 import { HUD } from "components";
 import { paths } from "../../../containers-paths";
 
 export const Dashboard = () => {
-  const { agentId = "" } = useParams<{ agentId?: string; buildVersion?: string }>();
-  const { plugins = [] } =
-    useAdminConnection<Agent>(`/api/agents/${agentId}`) || {};
+  const { serviceGroupId = "" } = useParams<{ serviceGroupId?: string; buildVersion?: string }>();
+  const plugins = useAdminConnection<Plugin[]>(`/groups/${serviceGroupId}/plugins`) || [];
   const installedPlugins = plugins.filter((plugin) => !plugin.available);
-
   return (
     <div tw="mt-5 px-6">
       <div tw="mb-7 text-24 leading-32 font-light">Dashboard</div>
@@ -35,7 +33,7 @@ export const Dashboard = () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         const hudPath = paths[id];
-        return <HUD url={hudPath} />;
+        return <HUD url={hudPath} name="ServiceGroupHUD" />;
       })}
     </div>
   );

@@ -29,7 +29,7 @@ import { useAdminConnection } from "hooks";
 import { Agent } from "types/agent";
 import { ServiceGroupHeader } from "./service-group-header";
 import { Sidebar } from "../agent/sidebar";
-import { Dashboard } from "../agent";
+import { Dashboard } from "./dashboard";
 
 interface Link {
   id: string;
@@ -72,9 +72,7 @@ export const ServiceGroup = () => {
       footer={<Footer />}
     >
       <div tw="w-full h-full">
-        <div tw="h-full mx-6">
-          <Route path="/service-group/:serviceGroupId/:buildVersion/dashboard" component={Dashboard} />
-        </div>
+        <Route path="/service-group/:serviceGroupId/dashboard" component={Dashboard} />
       </div>
     </PluginsLayout>
   );

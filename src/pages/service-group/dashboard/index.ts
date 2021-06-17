@@ -13,14 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from "react";
-import Parcel from "single-spa-react/parcel";
-
-export const HUD = ({ url, name = "AgentHUD" }: { url: string; name?: string }) => (
-  <Parcel
-    config={async () => {
-      const res = await System.import(url);
-      return res[name];
-    }}
-  />
-);
+export { Dashboard } from "./dashboard";
