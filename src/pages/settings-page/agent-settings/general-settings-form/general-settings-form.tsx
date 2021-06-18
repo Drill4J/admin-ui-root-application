@@ -17,6 +17,7 @@ import React, { useContext, useEffect } from "react";
 import axios from "axios";
 import { matchPath, useLocation } from "react-router-dom";
 import { Form, Field } from "react-final-form";
+import { useFormHandleSubmit } from "@drill4j/react-hooks";
 
 import {
   Button, FormGroup, GeneralAlerts, Spinner,
@@ -28,7 +29,6 @@ import {
 } from "forms";
 import { Agent } from "types/agent";
 import { NotificationManagerContext } from "notification-manager";
-import { useFormHandleSubmit } from "hooks";
 import { isPristine } from "utils";
 
 interface Props {

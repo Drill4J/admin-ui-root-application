@@ -1,0 +1,16 @@
+{
+  "name": "@drill4j/react-hooks",
+  "version": "1.0.3",
+  "main": "dist/index.js",
+  "types": "index.d.ts",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "react": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/react": "^16.9.32",
+    "query-string": "^7.0.0",
+    "typescript": "^4.1.2"
+  }
+}

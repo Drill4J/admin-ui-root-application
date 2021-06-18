@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 import React from "react";
-import { usePreserveCaretPosition } from "hooks";
 import { FieldRenderProps } from "react-final-form";
-import { convertToSingleSpaces } from "utils";
 import tw, { styled } from "twin.macro";
+import { usePreserveCaretPosition } from "@drill4j/react-hooks";
+
+import { convertToSingleSpaces } from "utils";
 
 const ErrorMessage = styled.div`
   ${tw`text-12 leading-24 whitespace-nowrap text-red-default`};

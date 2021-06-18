@@ -15,8 +15,8 @@
  */
 import React, { useEffect } from "react";
 import { getAppNames, LifeCycles, registerApplication } from "single-spa";
+import { useQueryParams } from "@drill4j/react-hooks";
 
-import { useQueryParams } from "hooks";
 import { paths } from "../../../containers-paths";
 
 export const Plugin = () => {

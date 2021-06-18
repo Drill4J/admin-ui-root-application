@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, { ReactNode, useState, createContext } from "react";
+import React, {
+  ReactNode, useState, createContext, useEffect,
+} from "react";
 import { MessagePanel } from "@drill4j/ui-kit";
 
 import { Message } from "types/message";
@@ -37,20 +39,35 @@ export const NotificationManagerContext = createContext<ContextType>({
   currentMessage: null,
 });
 
+const sendNotificationEvent = (message: Message) => {
+  const event = new CustomEvent<Message>("notification", {
+    detail: {
+      text: message.text,
+      type: message.type,
+    },
+  });
+  document.dispatchEvent(event);
+};
+
 export const NotificationManager = ({ children }: Props) => {
   const [message, setMessage] = useState<Message | null>(null);
   const { pathname = "" } = useLocation();
 
-  function handleShowMessage(incomingMessage: Message) {
-    if (incomingMessage.type === "SUCCESS") {
-      setMessage(incomingMessage);
+  function handleShowMessage(e: CustomEvent<Message>) {
+    if (e.detail.type === "SUCCESS") {
+      setMessage(e.detail);
       setTimeout(() => {
         setMessage(null);
       }, 3000);
     }
 
-    setMessage(incomingMessage);
+    setMessage(e.detail);
   }
+
+  useEffect(() => {
+    document.addEventListener("notification", handleShowMessage as EventListener);
+    return () => document.removeEventListener("notification", handleShowMessage as EventListener);
+  }, []);
 
   defaultAdminSocket.onCloseEvent = () => {
     setMessage({
@@ -59,22 +76,17 @@ export const NotificationManager = ({ children }: Props) => {
     });
   };
   defaultAdminSocket.onOpenEvent = () =>
-    handleShowMessage({
+    sendNotificationEvent({
       type: "SUCCESS",
       text: "Backend connection has been successfully restored.",
     });
 
-  const contextValue = {
-    showMessage: handleShowMessage,
-    closeMessage: () => setMessage(null),
-    currentMessage: message,
-  };
   return (
-    <NotificationManagerContext.Provider value={contextValue}>
+    <>
       {message && pathname !== "/login" && (
         <MessagePanel message={message} onClose={() => setMessage(null)} />
       )}
       {children}
-    </NotificationManagerContext.Provider>
+    </>
   );
 };

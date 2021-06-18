@@ -13,5 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export { useAdminConnection } from "./use-admin-connection";
-export { useAgent } from "./use-agent";
+import { useState, useEffect, useRef } from "react";
+
+export function useIntersection<N extends HTMLElement>(threshold = 1.0) {
+  const [visible, setVisible] = useState(true);
+  const ref = useRef<N>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      {
+        root: null,
+        threshold,
+      },
+    );
+    ref && ref.current && observer.observe(ref.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  });
+
+  return { visible, ref };
+}

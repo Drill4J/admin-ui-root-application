@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 import { useLocation } from "react-router-dom";
-import queryString from "query-string";
+import { parse } from "query-string";
 
 export function useQueryParams<T>(): T {
-  return queryString.parse(useLocation().search) as unknown as T;
+  return parse(useLocation().search) as unknown as T;
 }

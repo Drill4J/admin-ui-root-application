@@ -16,11 +16,11 @@
 import React, { useContext, useState } from "react";
 import { Modal, Button, Spinner } from "@drill4j/ui-kit";
 import { matchPath, useLocation } from "react-router-dom";
+import { useCloseModal } from "@drill4j/react-hooks";
 import tw, { styled } from "twin.macro";
 
 import { NotificationManagerContext } from "notification-manager";
 import { Plugin } from "types/plugin";
-import { useCloseModal } from "hooks";
 import { SelectableList } from "./selectable-list";
 import { loadPlugins } from "./load-plugins";
 

@@ -27,6 +27,7 @@ import { TypographyStyles, LayoutStyles, FontsStyles } from "global-styles";
 import { Footer, PrivateRoute, Sidebar } from "components";
 import { configureAxios } from "common";
 import { AppLayout } from "layouts";
+import { NotificationManager } from "./notification-manager";
 
 import "./index.css";
 
@@ -41,6 +42,7 @@ const Root = () => (
     <FontsStyles />
     <TypographyStyles />
     <LayoutStyles />
+    <NotificationManager />
     <Switch>
       <Route exact path="/login" component={LoginPage} />
       <PrivateRoute path={["/agent/:agentId/:buildVersion/dashboard", "/agent/:agentId/:buildVersion/plugin"]} component={AgentPage} />

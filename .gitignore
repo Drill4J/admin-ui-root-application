@@ -69,5 +69,6 @@ dist
 *.njsproj
 *.sln
 *.sw?
+*dist
 .DS_Store
 ./src/index.css

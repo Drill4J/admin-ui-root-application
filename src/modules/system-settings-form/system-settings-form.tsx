@@ -23,6 +23,7 @@ import {
 } from "@drill4j/ui-kit";
 import { Form, Field } from "react-final-form";
 import "twin.macro";
+import { useFormHandleSubmit } from "@drill4j/react-hooks";
 
 import {
   composeValidators, Fields, requiredArray, sizeLimit,
@@ -32,7 +33,6 @@ import {
   parsePackages, formatPackages, dotsAndSlashesToSlash, isPristine,
 } from "utils";
 import { Agent } from "types/agent";
-import { useFormHandleSubmit } from "hooks";
 import { NotificationManagerContext } from "notification-manager";
 
 interface Props {
